@@ -3,7 +3,7 @@
     <Header :owner='owner' />
     <InputField label='Enter new task: ' @addTaskFromInput="addTask" />
     <TaskList randoproperty="This is a randomly parsed property" :taskList="todoList" />
-    <button @click="eraseAll">Clear all</button>
+    <p><button @click="eraseAll">Clear all</button></p>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default class App extends Vue {
       done: false
     },
     {
-      name: 'Play pico-8',
+      name: 'Play Pico-8',
       done: false
     },
     {
@@ -58,13 +58,12 @@ export default class App extends Vue {
     })
 
     this.$root.$on('updateListCompletion', (_index: number, _done: boolean) => {
-      // console.log('index to be deleted: ' + _index.toString())
       this.todoList[_index].done = _done
       // console.log(_index + _done.toString())
     })
 
     this.$root.$on('pushTaskToTheEnd', (_index: number) => {
-      console.log(_index)
+      // console.log(_index)
       const tempTask = this.todoList[_index]
       this.todoList.splice(_index, 1)
       this.todoList.push(tempTask)
@@ -88,8 +87,8 @@ export default class App extends Vue {
 
   @Watch('todoList')
   todoListChanged (_newTodoList: Array<{ name: string; done: boolean }>) {
-    // localStorage.todoList = JSON.stringify(_newTodoList)
-    // console.log(localStorage.todoList)
+    localStorage.todoList = JSON.stringify(_newTodoList)
+    console.log(JSON.stringify(_newTodoList))
   }
 }
 
