@@ -3,8 +3,8 @@
         <h1>Tasks to do</h1>
         <p class="subheading">List owner:
             <span v-if="editMode" class="owner">
-                <input class= "owner input" width="50" type="text" placeholder="June" v-model="owner">
-                <button @click="editMode = !editMode">Ok</button>
+                <input class= "owner input" width="50" type="text" placeholder="June" v-model="owner" @keyup.enter="editMode = !editMode; updateOwner()">
+                <button @click="editMode = !editMode; updateOwner()">Ok</button>
             </span>
             <span v-else>
                 <span class="owner">{{owner}}</span>
@@ -16,12 +16,16 @@
 
 <script lang="ts">
 
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class Header extends Vue {
-    owner = 'June';
-    editMode = false;
+  @Prop() owner!: string
+  editMode = false;
+
+  updateOwner () {
+    this.$root.$emit('updateOwner', this.owner)
+  }
 }
 
 </script>

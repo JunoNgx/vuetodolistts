@@ -13,7 +13,7 @@ import { Vue, Prop, Component } from 'vue-property-decorator'
 export default class InputField extends Vue {
   @Prop({ required: true })label!: string;
 
-  newTask = 'Watch weekly StarCraft';
+  newTask = 'Practice StarCraft';
 
   addTask () {
     this.$emit('addTaskFromInput', this.newTask)

@@ -3,8 +3,9 @@
     <p>
       <span class="task-index">{{taskIndex}}</span>
       <span class="task-name">{{taskName}}</span>
-      <input class="task-complete-box" type="checkbox" v-model="taskDone">
-      <button class="task-delete-button" v-if="taskDone">X</button>
+      <!-- <input class="task-complete-box" type="checkbox" v-model="taskDone" @click="updateListAtIndex"> -->
+      <input class="task-complete-box" type="checkbox" v-model="taskDone" @change="updateListCompletion">
+      <button class="task-delete-button" @click="deleteTask" v-if="taskDone">X</button>
     </p>
   </div>
 </template>
@@ -18,6 +19,21 @@ export default class Task extends Vue {
   @Prop() taskIndex!: number;
   @Prop() taskName!: string;
   @Prop() taskDone!: boolean;
+
+  deleteTask () {
+    this.$root.$emit('deleteTask', this.taskIndex)
+    // console.log(this.taskIndex)
+  }
+
+  updateListCompletion () {
+    // this.taskDone = !this.taskDone
+    this.$root.$emit('updateListCompletion', this.taskIndex, this.taskDone)
+
+    if (this.taskDone === true) {
+      this.$root.$emit('pushTaskToTheEnd', this.taskIndex)
+      // console.log(this.taskIndex)
+    }
+  }
 
   taskAsObject (): object {
     return {
