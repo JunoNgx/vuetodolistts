@@ -22,7 +22,7 @@ import InputField from './components/InputField.vue'
 })
 
 export default class App extends Vue {
-  owner = 'June'
+  owner = 'Emkyo'
   todoList = [
     {
       name: 'Learn Elm',
@@ -88,7 +88,7 @@ export default class App extends Vue {
   @Watch('todoList')
   todoListChanged (_newTodoList: Array<{ name: string; done: boolean }>) {
     localStorage.todoList = JSON.stringify(_newTodoList)
-    console.log(JSON.stringify(_newTodoList))
+    // console.log(JSON.stringify(_newTodoList))
   }
 }
 
