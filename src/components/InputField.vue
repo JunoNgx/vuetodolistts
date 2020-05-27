@@ -46,4 +46,8 @@ p.error {
   color: #CD5C5C;
 }
 
+#input-field {
+  width: 150px;
+}
+
 </style>
