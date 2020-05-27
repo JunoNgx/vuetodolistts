@@ -39,15 +39,12 @@ export default class InputField extends Vue {
 
 input {
   margin-right: 0.5rem;
+  width: 150px;
 }
 
 p.error {
   font-size: 14px;
   color: #CD5C5C;
-}
-
-#input-field {
-  width: 150px;
 }
 
 </style>
