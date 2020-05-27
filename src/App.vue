@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header :owner='owner' />
-    <InputField label='Enter new task: ' @addTaskFromInput="addTask" />
+    <InputField label='New task: ' @addTaskFromInput="addTask" />
     <TaskList randoproperty="This is a randomly parsed property" :taskList="todoList" />
     <p><button @click="eraseAll">Clear all</button></p>
   </div>
