@@ -1,9 +1,11 @@
 <template>
     <div>
         <!-- <p>{{randoproperty}}</p> -->
-        <div>
+        <!-- <div> -->
+          <transition-group name="flip-list" tag="div">
             <Task v-for="task in taskList" :key="task" :taskName="task.name" :taskDone="task.done" :taskIndex="taskList.indexOf(task)"></Task>
-        </div>
+          </transition-group>
+        <!-- </div> -->
     </div>
 </template>
 
@@ -24,3 +26,11 @@ export default class TaskList extends Vue {
 }
 
 </script>
+
+<style lang="scss" scoped>
+
+.flip-list-move {
+  transition: transformation 1s;
+}
+
+</style>

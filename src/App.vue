@@ -100,6 +100,7 @@ $font-fam: "Roboto Condensed", Helvetica, sans-serif;
 
 #app {
   font-family: $font-fam;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -112,6 +113,7 @@ $font-fam: "Roboto Condensed", Helvetica, sans-serif;
 
 body {
   background-color: #eee;
+  // background-image: linear-gradient(20deg, #111 80%, #edfd88 20% )
 }
 
 button {
@@ -138,10 +140,15 @@ button {
   // border-color: buttonface;
   // border-image: initial;
   border: none;
+  transition-duration: 0.2s;
 }
 
 button:focus {
-    outline: #4DB6AC auto 1px;
+  outline: #4DB6AC auto 1px;
+}
+
+button:hover {
+  color: #eee;
 }
 
 </style>

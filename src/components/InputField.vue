@@ -2,8 +2,10 @@
   <div>
     <label for="input-field"> {{label}}  </label>
     <input id="input-field" type="text" v-model="newTask" @keyup.enter="checkInput">
-    <button @click="checkInput">Enter</button>
-    <p v-show="error" class="error" >Task name cannot be blank</p>
+    <button @click="checkInput">+</button>
+    <transition name="error">
+      <p v-show="error" class="error" >Task name cannot be blank</p>
+    </transition>
   </div>
 </template>
 
@@ -45,6 +47,13 @@ input {
 p.error {
   font-size: 14px;
   color: #CD5C5C;
+}
+
+.error-enter-active, .error-leave-active {
+  transition: opacity .5s;
+}
+.error-enter, .error-leave-to {
+  opacity: 0;
 }
 
 </style>
